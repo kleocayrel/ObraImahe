@@ -1,0 +1,10 @@
+{% extends 'App/index.html' %}
+{% block content %}
+  <h1>Edit post</h1>
+
+<form action="{% url 'Feed_Delete' object.pk %} " method="post">
+  {% csrf_token %}
+  <p>Are you sure you want to delete this {{post.title}} ?</p>
+  <input type="submit" value="Confirm">
+</form>
+{% endblock %}

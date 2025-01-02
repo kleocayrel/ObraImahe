@@ -1,0 +1,12 @@
+{% extends 'App/index.html' %}
+{% block content %}
+<a href="{% url 'Feed' %}">Back</a>
+
+        <div class = "feed">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text }}</p>
+        </div>
+    <a href="{% url 'Feed_Update' object.pk %}">Edit post</a>
+<br>
+    <a href="{% url 'Feed_Delete' object.pk %}">Delete post</a>
+{% endblock %}
