@@ -5,6 +5,7 @@
         <div class = "feed">
             <h1>{{ post.title }}</h1>
             <p>{{ post.text }}</p>
+            <img src="{{ post.image.url }}" alt=""/>
         </div>
     <a href="{% url 'Feed_Update' object.pk %}">Edit post</a>
 <br>

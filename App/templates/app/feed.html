@@ -1,11 +1,15 @@
 {% extends 'App/index.html' %}
 {% block content %}
 <a href="{% url 'Feed_Create' %}">Create Post</a>
-    {% for post in posts %}
-
-        <div class = "feed">
-            <h1><a href=" {% url 'Feed/Detail' post.pk %} ">{{ post.title }}</a></h1>
-            <p>{{ post.text}}</p>
-        </div>
-    {% endfor %}
+ {% for post in posts %}
+    <div class="feed">
+        <h1><a href="{% url 'Feed/Detail' post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt=""/>
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+    </div>
+{% endfor %}
 {% endblock %}

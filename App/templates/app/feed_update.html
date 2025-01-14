@@ -1,8 +1,9 @@
 {% extends 'App/index.html' %}
 {% block content %}
+    <a href="{% url 'Feed' %}">Back</a> 
   <h1>Edit post</h1>
 
-<form action="{% url 'Feed_Update' object.pk %} " method="post">
+<form action="{% url 'Feed_Update' object.pk %} " method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Update">

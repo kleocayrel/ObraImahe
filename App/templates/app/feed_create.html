@@ -2,7 +2,7 @@
 {% block content %}
   <h1>Create Feed</h1>
 
-<form action="{% url 'Feed_Create'%} " method="post">
+<form action="{% url 'Feed_Create'%} " method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Create">
