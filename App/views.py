@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post
+from django.contrib.auth.models import User
+from .models import Post, Author
 from django.urls import reverse_lazy
 
 class HomePage(TemplateView):
@@ -21,12 +22,19 @@ class FeedDetail(DetailView):
 
 class FeedCreate(CreateView):
     model = Post
-    fields = ['author', 'text', 'image', 'title']
+    fields = ['text', 'image', 'title','user']
     template_name = 'App/feed_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users'] = User.objects.all()
+        context['authors'] = Author.objects.all()
+        return context
+
 
 class FeedUpdate(UpdateView):
     model = Post
-    fields = ['author', 'text', 'image', 'title']
+    fields = ['text', 'image', 'title', 'user']
     template_name = 'App/feed_update.html'
 
 class FeedDelete(DeleteView):

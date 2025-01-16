@@ -1,10 +1,10 @@
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 from Project import settings
 from .views import (HomePage, AboutPage, FeedPage, FeedDetail, FeedCreate,
                     FeedUpdate, FeedDelete)
-from django.conf import settings
-from django.conf.urls.static import static
+
 urlpatterns = [
     path('',HomePage.as_view(), name='Home'),
     path('about/', AboutPage.as_view(), name='About'),
