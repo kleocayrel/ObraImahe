@@ -33,34 +33,23 @@
 <br>
 
     <div>
-       <label for="id_user">User: </label>
-        <Select name="user" id="id_user">
-            {% for user in users %}
-               <option value="{{ user.pk }}" {% if user.pk == form.user.value %} selected {% endif %}
-                   {{ users }}
+       <label for="id_artist">Artist: </label>
+        <Select name="user" id="id_artist">
+            {% for artist in artists %}
+               <option value="{{ artist.pk }}" {% if artist.pk == form.artist.value %} selected {% endif %}
+                   {{ artists }}
                </option>
             {% endfor %}
         </Select>
-    {% for error in form.user.errors %}
+    {% for error in form.artist.errors %}
             <p style="color: red">{{ error }}</p>
         {% endfor %}
     </div>
 
 <br>
 
-     <div>
-       <label for="id_author">Author(s): </label>
-        <Select name="author" id="id_author" multiple>
-            {% for author in authors %}
-               <option value="{{author.pk}}" {% if author.pk == form.author.value %} selected {% endif %}>
-                   {{ author.username }}
-               </option>
-            {% endfor %}
-        </Select>
-     {% for error in form.author.errors %}
-            <p style="color: red">{{ error }}</p>
-        {% endfor %}
-    </div>
   <input type="submit" value="Post"> Post </input>
-</form>
+</form> 
+    
+
 {% endblock %}

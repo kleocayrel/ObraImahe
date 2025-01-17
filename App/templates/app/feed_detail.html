@@ -5,9 +5,31 @@
         <div class = "feed">
             <h1>{{ post.title }}</h1>
             <p>{{ post.text }}</p>
-            <img src="{{ post.image.url }}" alt=""/>
+            <img src="{{ post.image.url }}"/>
         </div>
     <a href="{% url 'Feed_Update' object.pk %}">Edit post</a>
 <br>
     <a href="{% url 'Feed_Delete' object.pk %}">Delete post</a>
+
+    <br>
+    <br>
+    <h2>Comments...</h2>
+
+    {% if not post.comments.all %}
+    <p>No comments yet.</p>
+    {% endif %}
+
+    {% for comment in post.comments.all %}
+        <strong>
+        <p>{{ comment.username }} -
+            {{ comment.created_date }}
+        </p>
+        </strong>
+        <p>{{ comment.body }}</p>
+        <hr></hr>
+    {% endfor %}
+
+
+
+    
 {% endblock %}
