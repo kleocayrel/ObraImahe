@@ -13,12 +13,15 @@ class Artist(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE, default=1)
     image = models.ImageField (null=True, blank=True, upload_to='images/')
-    artist = models.ManyToManyField("Artist", related_name="posts")
+    artist = models.ManyToManyField("Artist", related_name="artists")
     category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     published_date = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -30,7 +33,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            "Feed/Detail",
+            "Feed_Detail",
             kwargs={
                 "pk": self.pk
             })

@@ -3,13 +3,16 @@
 <a href="{% url 'Feed_Create' %}">Create Post</a>
  {% for post in posts %}
     <div class="feed">
-        <h1><a href="{% url 'Feed/Detail' post.pk %}">{{ post.title }}</a></h1>
+
+        <h3> {{ post.user }} <br><a href="{% url 'Feed_Detail' post.pk %}">{{ post.title }}</a></h3>
         <p>{{ post.text }}</p>
+        <p>{{ post.artist }}</p>
         {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}"/>
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
         {% else %}
             <p>No image available</p>
         {% endif %}
     </div>
-{% endfor %}
+ {% endfor %}
+
 {% endblock %}
