@@ -36,8 +36,8 @@
 
     <br>
         <label for="category">Category</label>
-        <select name="category" pk=category>
-            {% for category in categories %}
+        <select name="category" id="category">
+            {% for category in categorys %}
                 <option value="{{ category.pk }}"
                         {% if category.pk == form.category.value %}selected{% endif %}>
                         {{ category}}
@@ -48,13 +48,15 @@
 <br >
 
     <div>
+        
             <label for="user">User</label>
             <select name="user" id="user">
+            {% for user in users %}
                 <option value="{{ user.pk }}"
                         {% if user.pk == form.user.value %}selected{% endif %}>
                          {{ user }}
                 </option>
-
+            {% endfor %}
 
             </select>
         </div>

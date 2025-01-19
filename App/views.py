@@ -30,13 +30,13 @@ class FeedCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['artists'] = Artist.objects.all()
-        context['categories'] = Category.objects.all()
+        context['categorys'] = Category.objects.all()
         context['users'] = User.objects.all()
         return context
 
 class CommentCreate(CreateView):
     model = Comment
-    fields = ['body']
+    fields = ['body', 'username']
     template_name = 'App/comment_create.html'
     success_url = reverse_lazy('Feed_Detail')
 
@@ -57,4 +57,12 @@ class FeedDelete(DeleteView):
     template_name = 'App/feed_delete.html'
     success_url = reverse_lazy('Feed')
 
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = ['body','username']
+    template_name = 'App/comment_update.html'
 
+class CommentDelete(DeleteView):
+    model = Comment
+    template_name = 'App/comment_delete.html'
+    success_url = reverse_lazy('Feed')

@@ -30,8 +30,8 @@
         </strong>
         <p>{{ comment.body }}</p>
         
-        <a href="{% url 'Comment_Update' post.id %}">Edit post</a>
-        <a href="{% url 'Comment_Delete' post.id %}">Delete post</a>
+        <a href="{% url 'Comment_Update' post.pk %}">Edit comment</a>
+        <a href="{% url 'Comment_Delete' post.pk %}">Delete Comment</a>
  
         <hr>
     {% endfor %}
