@@ -1,0 +1,15 @@
+{% extends 'App/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <a href="{% url 'Feed' %}">Back</a>
+    
+ <div class="container">
+  <h1>Edit Comment</h1>
+<form method="POST" action="{% url 'Comment_Update' object.pk %}">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Update">
+</form>
+ </div>
+    
+{% endblock %}

@@ -14,17 +14,17 @@ class AboutPage(TemplateView):
 class FeedPage(ListView):
     model = Post
     context_object_name = 'posts'
-    template_name = 'App/feed.html'
+    template_name = 'App/Feed/feed.html'
 
 class FeedDetail(DetailView):
     model = Post
-    template_name = 'App/feed_detail.html'
+    template_name = 'App/Feed/feed_detail.html'
     success_url = reverse_lazy('Feed')
 
 class FeedCreate(CreateView):
     model = Post
     fields = ['text', 'image', 'title','artist','category', 'user']
-    template_name = 'App/feed_create.html'
+    template_name = 'App/Feed/feed_create.html'
     success_url = reverse_lazy('Feed')
 
     def get_context_data(self, **kwargs):
@@ -37,7 +37,7 @@ class FeedCreate(CreateView):
 class CommentCreate(CreateView):
     model = Comment
     fields = ['body', 'username']
-    template_name = 'App/comment_create.html'
+    template_name = 'App/Comment/comment_create.html'
     success_url = reverse_lazy('Feed_Detail')
 
     def form_valid(self, form):
@@ -50,19 +50,22 @@ class CommentCreate(CreateView):
 class FeedUpdate(UpdateView):
     model = Post
     fields = ['text', 'image', 'title', 'artist','category', 'user']
-    template_name = 'App/feed_update.html'
+    template_name = 'App/Feed/feed_update.html'
 
 class FeedDelete(DeleteView):
     model = Post
-    template_name = 'App/feed_delete.html'
+    template_name = 'App/Feed/feed_delete.html'
     success_url = reverse_lazy('Feed')
 
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ['body','username']
-    template_name = 'App/comment_update.html'
+    template_name = 'App/Comment/comment_update.html'
+    def get_success_url(self):
+        return reverse_lazy('Feed_Detail', kwargs={'pk': self.kwargs['pk']})
+
 
 class CommentDelete(DeleteView):
     model = Comment
-    template_name = 'App/comment_delete.html'
+    template_name = 'App/Comment/comment_delete.html'
     success_url = reverse_lazy('Feed')

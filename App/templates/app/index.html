@@ -4,16 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+  {% include  'app/navbar.html' %}
   
-  <header>
-        <a href="{% url 'Home' %}">Home</a>
-        <a href="{% url 'About' %}">About</a>
-         <a href="{% url 'Feed' %}">Feed</a>
-  </header>
-
 {% block content%}
 
 <!--pages-->
