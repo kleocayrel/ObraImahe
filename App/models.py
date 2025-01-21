@@ -19,7 +19,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
-    user = models.ForeignKey("auth.User", on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     image = models.ImageField (null=True, blank=True, upload_to='images/')
     artist = models.ManyToManyField("Artist", related_name="artists")
     category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True, blank=True)

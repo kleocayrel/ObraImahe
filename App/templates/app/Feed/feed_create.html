@@ -6,7 +6,8 @@
 <form action="{% url 'Feed_Create' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div>
+
+   <div>
         <label for="title">Title</label>
         <input type="text   " name="title" id="title">
     </div>
@@ -20,7 +21,7 @@
 <br>
     <div>
         <label for="image">Image</label>
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept="image/*">
     </div>
 <br>
     <div>
@@ -48,7 +49,7 @@
 <br >
 
     <div>
-        
+
             <label for="user">User</label>
             <select name="user" id="user">
             {% for user in users %}
