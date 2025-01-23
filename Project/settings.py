@@ -16,6 +16,8 @@ SECRET_KEY = 'django-insecure-%k#p6$fk)gf^%$*%!@s)820d#dgxursm4gpne-hmkqfa(2@_n&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Application definition
@@ -28,8 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App.apps.AppConfig',
-    "crispy_forms",
-    "crispy_bootstrap5",
+
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
