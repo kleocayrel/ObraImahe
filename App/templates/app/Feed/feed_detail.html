@@ -4,9 +4,15 @@
 
     <div class="Detail">
         <div class="feed-detail">
+            
+            <div class="Back>
+                <button><a href="{% url 'Feed' %}">X</a></button>
+            </div>
+
             <div class="feed-detail-header">
                 <h1>{{ post.title }}</h1>
                 <p>{{ post.text }}</p>
+                <p>Category: {{ post.category }}</p>
                 <p>Posted by: {{ post.user }}</p>
                 <p>Posted on: {{ post.created_date }}</p>
             </div>

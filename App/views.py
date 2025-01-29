@@ -38,13 +38,14 @@ class FeedCreate(CreateView):
 
 class CommentCreate(CreateView):
     model = Comment
-    fields = ['body', 'username']
+    fields = ['body']
     template_name = 'App/Comment/comment_create.html'
     success_url = reverse_lazy('Feed_Detail')
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
+
     def get_success_url(self):
         return reverse_lazy('Feed_Detail', kwargs={'pk': self.kwargs['pk']})
 

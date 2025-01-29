@@ -1,0 +1,798 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Neutral light background */
+    color: #333; /* Dark text */
+}
+/* Navbar */
+/* Modern Navbar Styles */
+.navbar {
+    background-color: #1f2937; /* Dark gray */
+    color: #ffffff; /* White text */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.container.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent spacing */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    border-radius: 8px; /* Subtle rounding for a polished look */
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff; /* White for visibility */
+    text-transform: uppercase; /* Clean and professional */
+}
+
+/* Navigation Menu */
+nav ul.nav-list {
+    display: flex;
+    gap: 25px; /* Even spacing between nav items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.nav-list li {
+    display: inline-block;
+}
+
+.nav-link,
+.logout-button {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Hover Styles */
+.nav-link:hover,
+.logout-button:hover {
+    background-color: #3b82f6; /* Vibrant blue hover effect */
+    color: #ffffff;
+}
+
+/* Logout Button */
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+/* Logout Button Hover */
+.logout-form .logout-button:hover {
+    background-color: #db2777; /* Accent pink for logout button */
+}
+
+/* Mobile Responsive Styling */
+@media screen and (max-width: 768px) {
+    .container.flex-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 10px; /* Reduced spacing for vertical layout */
+    }
+}
+
+/* Home */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #3b82f6, #1f2937); /* Gradient with color combo */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.hero button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #f59e0b; /* Orange accent */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.hero button:hover {
+    background-color: #d97706; /* Darker orange on hover */
+    transform: translateY(-2px); /* Slight elevation on hover */
+}
+
+/* Featured Art Section */
+.featured-art {
+    background-color: #ffffff; /* Clean white section */
+    padding: 50px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.featured-art h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937; /* Dark Gray */
+}
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.art-item {
+    background-color: #f9fafb; /* Light gray background */
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.art-item:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* More prominent hover shadow */
+    transform: translateY(-5px); /* Slight upward movement */
+}
+
+.art-item img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.art-item h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #111827; /* Slightly darker gray */
+    margin-bottom: 10px;
+}
+
+.art-item p {
+    color: #4b5563; /* Muted text gray */
+}
+
+/* Categories Section */
+.categories {
+    background-color: #f3f4f6; /* Very light gray */
+    padding: 50px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.categories h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.category-item {
+    background-color: #ffffff; /* White for contrast */
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-item h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #111827;
+    margin: 0;
+}
+
+/* Call to Action Section */
+.call-to-action {
+    background: linear-gradient(135deg, #3b82f6, #1f2937); /* Blue gradient */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.call-to-action p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.call-to-action button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    background-color: #f59e0b; /* Orange button for contrast */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.call-to-action button:hover {
+    background-color: #d97706; /* Darker orange */
+    transform: translateY(-2px);
+}
+
+.call-to-action button a {
+    text-decoration: none; /* Remove underline */
+    color: #ffffff;
+}
+
+/* FEED */
+
+a {
+    text-decoration: none;
+    color: #3b82f6; /* Accent blue */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #285a8e; /* Darker blue on hover */
+}
+
+/* Button Link for 'Create Post' */
+a[href*='Create_Post'] {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #1f2937; /* Dark gray */
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+a[href*='Create_Post']:hover {
+    background-color: #3b82f6; /* Accent blue on hover */
+    transform: scale(1.05); /* Slight hover effect */
+}
+
+/* Post Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Post Styles */
+.post-container {
+    background-color: #ffffff; /* White card */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* Featured Post Additional Styles */
+.featured-post {
+    border: 2px solid #3b82f6; /* Highlight border for featured posts */
+}
+
+/* Post Image Container */
+.post-image-container img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd; /* Separate image from details */
+}
+
+.no-image-container {
+    padding: 40px; /* Empty space for no image */
+    text-align: center;
+    background-color: #f1f1f1; /* Light gray for missing images */
+    color: #999; /* Subtle gray text */
+    font-style: italic; /* Emphasize empty state */
+}
+
+/* Post Details */
+.post-details {
+    padding: 15px;
+}
+
+.post-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1f2937; /* Dark gray (consistent with other headings) */
+}
+
+.post-title a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #3b82f6; /* Blue for clickable title */
+}
+
+.post-title a:hover {
+    text-decoration: underline;
+}
+
+.post-user {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #777; /* Gray for the username */
+}
+
+.post-text {
+    margin: 10px 0;
+    color: #555; /* Darker gray for post body text */
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* No Posts Message */
+.no-posts-container {
+    text-align: center;
+    color: #999; /* Subtle gray for empty state text */
+    font-size: 1.2rem;
+    font-style: italic;
+    padding: 50px;
+}
+
+/* FEED DETAIL*/
+
+/* Back Link */
+a[href="{% url 'Feed' %}"] {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #374151; /* Medium dark gray background */
+    color: #f9fafb;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+a[href="{% url 'Feed' %}"]:hover {
+    background: #4b5563; /* Slightly lighter shade for hover effect */
+}
+
+/* Feed Detail Section */
+.Detail {
+    margin: 30px auto;
+    max-width: 800px;
+    background: #374151; /* Medium gray for card background */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.feed-detail h1 {
+    font-size: 2rem;
+    color: #f9fafb;
+    margin-bottom: 15px;
+}
+
+.feed-detail p {
+    color: #d1d5db; /* Softer gray for content text */
+    margin: 10px 0;
+}
+
+.feed-detail-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 2px solid #3b82f6; /* Subtle border around images */
+}
+
+.feed-detail-image p {
+    color: #d1d5db; /* Fallback text for no image */
+}
+
+/* Edit Post and Delete Post Buttons */
+.feed-detail-edit {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.feed-detail-edit a {
+    font-size: 1rem;
+    color: #f9fafb;
+    background-color: #3b82f6; /* Blue buttons */
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.feed-detail-edit a:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Comments Section */
+.feed-detail-comment h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #f9fafb;
+}
+
+.feed-detail-comment a {
+    font-size: 1rem;
+    color: #3b82f6; /* Matches the interactive button/link color */
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.comments-list .comment-item {
+    background: #4b5563; /* Slightly lighter gray for comments */
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.comments-list .comment-item strong {
+    color: #9ca3af; /* Light gray for username and date */
+}
+
+.comments-list .comment-item p {
+    color: #d1d5db; /* Softer gray for comment body */
+    margin-top: 5px;
+}
+
+.comment-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.comment-actions a {
+    font-size: 0.9rem;
+    color: #3b82f6; /* Blue for actions */
+    transition: transform 0.3s ease;
+}
+
+.comment-actions a:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Footer Divider (hr line) */
+hr {
+    border: 0;
+    border-top: 1px solid #374151; /* Divider in medium gray */
+    margin: 30px 0;
+}
+
+/* FEED CREATE */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Form Container */
+.custom-form {
+    background: #ffffff; /* White background for contrast */
+    padding: 30px;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.custom-form label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+    color: #333; /* Darker color for readability */
+}
+
+.custom-form input,
+.custom-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Light background for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-form input:hover,
+.custom-form select:hover {
+    border-color: #3b82f6; /* Matches accent color */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Soft blue glow on hover */
+}
+
+.custom-form input:focus,
+.custom-form select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6); /* Stronger glow for focus */
+}
+
+/* File Upload Image Preview */
+.image-upload img {
+    max-width: 100%; /* Makes it responsive */
+    margin-top: 10px;
+    border: 2px dashed #3b82f6; /* Matches the accent color */
+    border-radius: 8px;
+}
+
+/* Submit Button */
+.custom-form input[type="submit"] {
+    padding: 10px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3b82f6; /* Blue button matching the theme */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+    align-self: center;
+}
+
+.custom-form input[type="submit"]:hover {
+    background-color: #2563eb; /* Slightly darker blue on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .custom-form {
+        padding: 20px;
+    }
+
+    .custom-form input,
+    .custom-form select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .custom-form input[type="submit"] {
+        font-size: 1rem;
+    }
+}
+
+/* feed delete */
+/* General Button Styles */
+button {
+    background-color: #337ab7; /* Matched blue tone */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #285a8e; /* Slightly darker blue for hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Page Title */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #222; /* Slightly darker tone for titles */
+}
+
+/* Delete Form Section */
+.delete-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff; /* White background for form */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: center;
+}
+
+.delete-form p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #555; /* Softer neutral tone for text */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .delete-form {
+        padding: 15px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+/*login signup*/
+/* Card Base Styles */
+.card {
+    max-width: 400px;
+    margin: 50px auto;
+    background: linear-gradient(135deg, #1f2937, #4b5563); /* Gradient with dark gray shades */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Modern shadow effect */
+    color: #fff; /* White text for dark background */
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e5e7eb; /* Light gray for the title */
+}
+
+.card-content {
+    margin-bottom: 20px;
+    color: #d1d5db; /* Softer gray for content */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #e5e7eb; /* Light gray for labels */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #4b5563; /* Match with background tones */
+    background-color: #2d3748; /* Dark gray input background */
+    color: #fff; /* White text inside input */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3b82f6; /* Accent blue on focus */
+}
+
+.card-footer {
+    text-align: center;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #3b82f6; /* Accent blue */
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.btn-primary:active {
+    transform: translateY(0); /* Reset on click */
+}
+
+.card-footer a {
+    color: #93c5fd; /* Soft blue for links */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-footer a:hover {
+    color: #3b82f6; /* Match with button hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 500px) {
+    .card {
+        margin: 20px;
+        padding: 15px;
+    }
+    .btn {
+        width: 100%; /* Make button full-width on smaller devices */
+    }
+}

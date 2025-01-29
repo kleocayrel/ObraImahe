@@ -38,16 +38,16 @@
         <h2>Explore Categories</h2>
         <div class="category-grid">
             <div class="category-item">
-                <h3>Abstract Art</h3>
+                <h3>Graphite</h3>
             </div>
             <div class="category-item">
-                <h3>Portraits</h3>
+                <h3>Charcoal</h3>
             </div>
             <div class="category-item">
-                <h3>Landscape</h3>
+                <h3>Ballpoint</h3>
             </div>
             <div class="category-item">
-                <h3>Sculptures</h3>
+                <h3>Graphite</h3>
             </div>
         </div>
     </section>
@@ -57,7 +57,12 @@
     <section>
         <h2>Are you an artist?</h2>
         <p>Join our platform and share your art with the world.</p>
+        {% if user.is_authenticated %}
         <button><a href="{% url 'login' %}">Get Started</a></button>
+        {% else %}
+        <button><a href="{% url 'Signup' %}">Sign up</a></button>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
     </section>
 </div>
 {% endblock %}

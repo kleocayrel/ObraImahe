@@ -1,0 +1,2 @@
+"/.idea/"      echo "/.venv/"      echo "/db.sqlite3"      git add .gitignore     git commit -m "Update .gitignore"
+"*.pyc" 

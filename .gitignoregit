@@ -1,0 +1,1 @@
+"*.pyc"  "__pycache__/"  ".venv/"  ".idea/"  "db.sqlite3"  "media/"  "static/"  add .gitignoregit commit -m "Add .gitignore to exclude unnecessary files"git restore .  # Discard unstaged changesgit pull origin main --rebase  # Start the rebase processgit push origin main  # Push after rebase succeeds

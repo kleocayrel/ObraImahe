@@ -1,11 +1,18 @@
 {% extends 'App/index.html' %}
 {% block content %}
-    <a href="{% url 'Feed_Create' %}">Create Post</a>
-    <br>
+    <div class="CreatePost">
+
+{% if user.is_authenticated%}
+    <h3><a href="{% url 'Feed_Create' %}">Create Post </a></h3>
+{% else %}
+    <h3>Log in to create a post.</h3>
+    {% endif %}
+
+</div>
     <hr>
     <div class="card-container">
         {% for post in posts %}
-            <div class="post-container {% if post.featured %}featured-post{% else %}regular-post{% endif %}">
+            <div class="post-container">
                 {% if post.image %}
                     <div class="post-image-container">
                         <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
