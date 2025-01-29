@@ -1,4 +1,63 @@
 {% extends 'App/index.html' %}
+{% load static %}
 {% block content %}
-    <h1>Home</h1>
+
+    <div class="hero">
+    <section>
+        <h1>Welcome</h1>
+        <p>Where aspiring artists showcase their unique creations and connect with art lovers everywhere.</p>
+        <button><a href="{% url 'Feed' %}">Explore</a></button>
+    </section>
+</div>
+
+<div class="featured-art">
+    <section>
+        <h2>Featured Artworks</h2>
+        <div class="art-grid">
+            <div class="art-item">
+                <img src="{% static 'images/body graphite(2).jpg' %}" alt="Featured Art 1">
+                <h3>Graphite</h3>
+                <p>By: kleo </p>
+            </div>
+            <div class="art-item">
+                <img src="{% static 'images/body graphite.jpg' %}" alt="Featured Art 2">
+                <h3>Graphite</h3>
+                <p>By: kleo </p>
+            </div>
+            <div class="art-item">
+                <img src="{% static 'images/Ichigo ballpen.jpg' %}" alt="Featured Art 3">
+                <h3>Ballpen hatching</h3>
+                <p>By: kleo </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="categories">
+    <section>
+        <h2>Explore Categories</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <h3>Abstract Art</h3>
+            </div>
+            <div class="category-item">
+                <h3>Portraits</h3>
+            </div>
+            <div class="category-item">
+                <h3>Landscape</h3>
+            </div>
+            <div class="category-item">
+                <h3>Sculptures</h3>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="call-to-action">
+    <section>
+        <h2>Are you an artist?</h2>
+        <p>Join our platform and share your art with the world.</p>
+        <button><a href="{% url 'login' %}">Get Started</a></button>
+    </section>
+</div>
 {% endblock %}

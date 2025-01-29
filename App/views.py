@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
-from .models import Post, Artist, Comment, Category
+from .models import Post, Artist, Comment,Category
 from django.urls import reverse_lazy
 
 class HomePage(TemplateView):
@@ -20,6 +21,7 @@ class FeedDetail(DetailView):
     model = Post
     template_name = 'App/Feed/feed_detail.html'
     success_url = reverse_lazy('Feed')
+
 
 class FeedCreate(CreateView):
     model = Post

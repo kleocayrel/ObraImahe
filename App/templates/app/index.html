@@ -3,17 +3,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title> ObraImahe</title>
+    <!--<link rel="stylesheet" href="{% static 'css/style.css' %}">--!>
+            <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+            <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-  {% include  'app/navbar.html' %}
-  {% if user.is_authenticated %}
-    <p>Welcome {{user.username}}</p>
-  {% else %}
-  <p>You are not logged in</p>
-  {% endif %}
+      {% include  'app/navbar.html' %}
+      {% if user.is_authenticated %}
+        <p>Welcome {{user.username}}</p>
+          {% else %}
+        <p>You are not logged in</p>
+      {% endif %}
+  
 
 
 {% block content%}

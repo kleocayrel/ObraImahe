@@ -1,15 +1,30 @@
 {% extends 'App/index.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
     <a href="{% url 'Feed' %}">Back</a>
     
- <div class="container">
-  <h1>Edit Comment</h1>
-<form method="POST" action="{% url 'Comment_Update' object.pk %}">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" value="Update">
-</form>
- </div>
+    <div class="container">
+        <h1>Edit Comment</h1>
+        <form action="{% url 'Comment_Update' comment.id %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+        
+        {% if form.errors %}
+            <div class="error">
+                <h2>There were errors in your form:</h2>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
     
 {% endblock %}

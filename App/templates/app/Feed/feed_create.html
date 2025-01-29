@@ -1,74 +1,66 @@
-.ve{% extends 'App/index.html' %}
+{% extends 'App/index.html' %}
 {% load static %}
 {% block content %}
     <h1>Create Feed</h1>
 
-<form action="{% url 'Feed_Create' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create">
+<div>
+    <form action="{% url 'Feed_Create' %}" method="post" enctype="multipart/form-data" class="custom-form">
+        {% csrf_token %}
+
+        <div class="title-upload">
+            <label for="id_title">Title:</label>
+            <input type="text" name="title" id="id_title"></input>
+        </div>
+
+        <div class="text-upload">
+            <label for="id_text">Text:</label>
+            <input type="text" name="text" id="id_text">
+        </div>
+
+        <div class="user-upload">
+            <label for="id_user">user:</label>
+            <select id="id_user" name="user">
+                {% for user in users %}
+                    <option value="{{ user.id }}" {% if user.id == form.user.value %}selected{% endif %}>
+                        {{ user }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="image-upload">
+            <label for="id_image">Image:</label>
+            <input type="file" name="image" id="id_image" onchange="previewFile(this)">
+            <br>
+            <img id="imagePreview" src="{{ post.image.url }}" alt="Image Preview"
+                 style="max-width: 400px; margin-top: 10px; display: none;">
+        </div>
+
+
+        <div class="artist-upload">
+            <label for="id_artist">Artist:</label>
+            <select id="id_artist" name="artist">
+                {% for artist in artists %}
+                    <option value="{{ artist.id }}" {% if artist.id == form.artist.value %}selected{% endif %}>
+                        {{ artist }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="category-upload">
+            <label for="id_category">Category:</label>
+            <select id="id_category" name="category">
+                {% for category in categorys %}
+                    <option value="{{ category.id }}" {% if category.id == form.category.value %}selected{% endif %}>
+                        {{ category }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Create">
     </form>
 
+</div>
 
-{#   <div>#}
-{#        <label for="title">Title</label>#}
-{#        <input type="text   " name="title" id="title">#}
-{#    </div>#}
-{#<br>#}
-{#    <div>#}
-{#        <label for="description">Description</label>#}
-{#        <textarea name="description" id="description" cols="30" rows="10"></textarea>#}
-{##}
-{##}
-{#    </div>#}
-{#<br>#}
-{#    <div>#}
-{#        <label for="image">Image</label>#}
-{#        <input type="file" name="image" id="image" accept="image/*">#}
-{#    </div>#}
-{#<br>#}
-{#    <div>#}
-{#        <label for="artist" >Artists</label>#}
-{#        <select name="artist" id="artist" multiple>#}
-{#            {% for artist in artists %}#}
-{#                <option value="{{ artist.pk }}" {% if artist.pk == form.artist.value %}selected{% endif %}>#}
-{#                    {{ artist}}#}
-{#                </option>#}
-{#            {% endfor %}#}
-{#        </select>#}
-{#    </div>#}
-{##}
-{#    <br>#}
-{#        <label for="category">Category</label>#}
-{#        <select name="category" id="category">#}
-{#            {% for category in categorys %}#}
-{#                <option value="{{ category.pk }}"#}
-{#                        {% if category.pk == form.category.value %}selected{% endif %}>#}
-{#                        {{ category}}#}
-{#                </option>#}
-{#            {% endfor %}#}
-{#        </select>#}
-{#<br>#}
-{#<br >#}
-{##}
-{#    <div>#}
-{##}
-{#            <label for="user">User</label>#}
-{#            <select name="user" id="user">#}
-{#            {% for user in users %}#}
-{#                <option value="{{ user.pk }}"#}
-{#                        {% if user.pk == form.user.value %}selected{% endif %}>#}
-{#                         {{ user }}#}
-{#                </option>#}
-{#            {% endfor %}#}
-{##}
-{#            </select>#}
-{#        </div>#}
-{##}
-{#<br>#}
-{##}
-{#<input type="submit" value="Create">#}
-{##}
-{#</form>#}
 
 {% endblock %}

@@ -3,7 +3,7 @@
     <a href="{% url 'Feed' %}">Back</a>
   <h1>Edit Comment</h1>
 
-<form action="{% url 'Comment_Delete' object.pk %}" method="post">
+<form action="{% url 'Comment_Delete' comment.pk %}" method="post">
   {% csrf_token %}
   <p>Are you sure you want to delete this {{post.comment}} ?</p>
   <input type="submit" value="Confirm">

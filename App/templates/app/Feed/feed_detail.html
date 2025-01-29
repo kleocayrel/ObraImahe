@@ -1,44 +1,58 @@
 {% extends 'App/index.html' %}
 {% block content %}
-<a href="{% url 'Feed' %}">Back</a>
-    
-        <div class = "feed">
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.text }}</p>
-            <p>Posted by: {{ post.user }}</p>
-            <p>Posted on: {{ post.created_date }}</p>
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.user }}">
-            {% else %} 
-            <p>No image</p>
-            {% endif %}
+    <a href="{% url 'Feed' %}">Back</a>
+
+    <div class="Detail">
+        <div class="feed-detail">
+            <div class="feed-detail-header">
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.text }}</p>
+                <p>Posted by: {{ post.user }}</p>
+                <p>Posted on: {{ post.created_date }}</p>
+            </div>
+
+            <div class="feed-detail-image">
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.user }}">
+                {% else %}
+                    <p>No image</p>
+                {% endif %}
+            </div>
         </div>
-    <a href="{% url 'Feed_Update' post.id %}">Edit post</a>
-<br>
-    <a href="{% url 'Feed_Delete' post.id %}">Delete post</a>
 
-    <br>
-    <hr>
+        <div class="feed-detail-edit">
+            <a href="{% url 'Feed_Update' post.id %}">Edit post</a>
+            <a href="{% url 'Feed_Delete' post.id %}">Delete post</a>
+        </div>
 
-    <h2>Comments...</h2>
-    <a href="{% url 'Comment_Create' post.pk %}">Add Comment...</a>
-    {% if not post.comments.all %}
-    <p>No comments yet.</p>
-    {% endif %}
-
-    {% for comment in post.comments.all %}
-        <strong>
-        <p>{{ comment.username }} -
-            {{ comment.created_date }}
-        </p>
-        </strong>
-        <p>{{ comment.body }}</p>
-        
-        <a href="{% url 'Comment_Update' post.pk %}">Edit comment</a>
-        <a href="{% url 'Comment_Delete' post.pk %}">Delete Comment</a>
         <hr>
-    {% endfor %}
-    <a href="{% url 'Comment_Create' post.pk %}">Add Comment...</a>
 
+        <div class="feed-detail-comment">
+            <div class="comments-header">
+                <h2>Comments...</h2>
+                <a href="{% url 'Comment_Create' post.pk %}">Add Comment...</a>
+            </div>
+
+            <div class="comments-list">
+                {% if not post.comments.all %}
+                    <p>No comments yet.</p>
+                {% endif %}
+
+                {% for comment in post.comments.all %}
+                    <div class="comment-item">
+                        <strong>
+                            <p>{{ comment.username }} - {{ comment.created_date }}</p>
+                        </strong>
+                        <p>{{ comment.body }}</p>
+                        <div class="comment-actions">
+                            <a href="{% url 'Comment_Update' post.id %}">Edit Comment</a>
+                            <a href="{% url 'Comment_Delete' post.id %}">Delete Comment</a>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

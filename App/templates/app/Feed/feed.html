@@ -1,41 +1,33 @@
 {% extends 'App/index.html' %}
 {% block content %}
-<a href="{% url 'Feed_Create' %}">Create Post</a>
-
-    <h1 align="center">Feed</h1>
- <br>
+    <a href="{% url 'Feed_Create' %}">Create Post</a>
+    <br>
     <hr>
-
     <div class="card-container">
-    {% for post in posts %}
-    
-       
-        <div class="post-container {% if post.featured %}featured-post{% else %}regular-post{% endif %}">
-            
-            <h3 class="post-title">
-                {{ post.user }} <br>
-                <a href="{% url 'Feed_Detail' post.pk %}">{{ post.title }}</a>
-            </h3>
+        {% for post in posts %}
+            <div class="post-container {% if post.featured %}featured-post{% else %}regular-post{% endif %}">
+                {% if post.image %}
+                    <div class="post-image-container">
+                        <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+                    </div>
+                {% else %}
+                    <div class="no-image-container">
+                        <p class="no-image">No image available</p>
+                    </div>
+                {% endif %}
 
-          
-            <p class="post-text">{{ post.text }}</p>
-
-            
-            <p class="post-artist">By: {{ post.artist }}</p>
-
-         
-            {% if post.image %}
-                <div class="post-image-container">
-                    <img class="post-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+                <div class="post-details">
+                    <h3 class="post-title">
+                        <span class="post-user">{{ post.user }}</span> <br>
+                        <a href="{% url 'Feed_Detail' post.pk %}">{{ post.title }}</a>
+                    </h3>
+                    <p class="post-text">{{ post.text }}</p>
                 </div>
-            {% else %}
-                <p class="no-image">No image available</p>
-            {% endif %}
-        </div>
-
-    {% empty %}
-        <p>No posts available.</p>
-    {% endfor %}
-
+            </div>
+        {% empty %}
+            <div class="no-posts-container">
+                <p>No posts available.</p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
