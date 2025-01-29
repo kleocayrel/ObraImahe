@@ -9,7 +9,7 @@
 
         <div class="title-upload">
             <label for="id_title">Title:</label>
-            <input type="text" name="title" id="id_title"></input>
+            <input type="text" name="title" id="id_title">
         </div>
 
         <div class="text-upload">
@@ -36,7 +36,6 @@
                  style="max-width: 400px; margin-top: 10px; display: none;">
         </div>
 
-
         <div class="artist-upload">
             <label for="id_artist">Artist:</label>
             <select id="id_artist" name="artist">
@@ -50,7 +49,7 @@
         <div class="category-upload">
             <label for="id_category">Category:</label>
             <select id="id_category" name="category">
-                {% for category in categorys %}
+                {% for category in categories %}
                     <option value="{{ category.id }}" {% if category.id == form.category.value %}selected{% endif %}>
                         {{ category }}
                     </option>
@@ -61,6 +60,5 @@
     </form>
 
 </div>
-
 
 {% endblock %}

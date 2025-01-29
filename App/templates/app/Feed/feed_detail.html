@@ -1,64 +1,98 @@
 {% extends 'App/index.html' %}
+{% load static %}
+
 {% block content %}
-    <a href="{% url 'Feed' %}">Back</a>
 
-    <div class="Detail">
-        <div class="feed-detail">
-            
-            <div class="Back>
-                <button><a href="{% url 'Feed' %}">X</a></button>
-            </div>
+<div class="Detail">
+    <div class="feed-detail">
 
-            <div class="feed-detail-header">
-                <h1>{{ post.title }}</h1>
-                <p>{{ post.text }}</p>
-                <p>Category: {{ post.category }}</p>
-                <p>Posted by: {{ post.user }}</p>
-                <p>Posted on: {{ post.created_date }}</p>
-            </div>
-
-            <div class="feed-detail-image">
-                {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="{{ post.user }}">
-                {% else %}
-                    <p>No image</p>
-                {% endif %}
-            </div>
+        <div class="Back">
+            <button><a href="{% url 'Feed' %}">X</a></button>
         </div>
 
-        <div class="feed-detail-edit">
-            <a href="{% url 'Feed_Update' post.id %}">Edit post</a>
-            <a href="{% url 'Feed_Delete' post.id %}">Delete post</a>
+        <div class="feed-detail-header">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.body }}</p>
+            <p>Category: {{ post.category }}</p>
+            <p>Posted by: {{ post.user }}</p>
+            <p>Posted on: {{ post.created_date }}</p>
         </div>
 
-        <hr>
-
-        <div class="feed-detail-comment">
-            <div class="comments-header">
-                <h2>Comments...</h2>
-                <a href="{% url 'Comment_Create' post.pk %}">Add Comment...</a>
-            </div>
-
-            <div class="comments-list">
-                {% if not post.comments.all %}
-                    <p>No comments yet.</p>
-                {% endif %}
-
-                {% for comment in post.comments.all %}
-                    <div class="comment-item">
-                        <strong>
-                            <p>{{ comment.username }} - {{ comment.created_date }}</p>
-                        </strong>
-                        <p>{{ comment.body }}</p>
-                        <div class="comment-actions">
-                            <a href="{% url 'Comment_Update' post.id %}">Edit Comment</a>
-                            <a href="{% url 'Comment_Delete' post.id %}">Delete Comment</a>
-                        </div>
-                        <hr>
-                    </div>
-                {% endfor %}
-            </div>
+        <div class="feed-detail-image">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% else %}
+                <p>No image</p>
+            {% endif %}
         </div>
     </div>
+
+    <div class="feed-detail-edit">
+        <a href="{% url 'Feed_Update' post.id %}">Edit post</a>
+        <a href="{% url 'Feed_Delete' post.id %}">Delete post</a>
+    </div>
+
+    <hr>
+
+    <div class="feed-detail-comment">
+        <div class="comments-header">
+            <h2>Comments...</h2>
+            <form method="POST" action="{% url 'Comment_Create' post.pk %}">
+                {% csrf_token %}
+                <textarea name="body" cols="110" rows="2" placeholder="Write a comment..." required></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        </div>
+
+        <div class="comments-list">
+            {% if not post.comments.all %}
+                <p>No comments yet.</p>
+            {% else %}
+                <div class="comments-list-detail">
+                    {% for comment in post.comments.all %}
+                        <hr>
+                        <p><strong>{{ comment.username }}</strong> - {{ comment.created_on }}</p>
+                        <p>{{ comment.body }}</p>
+
+                        <!-- Reply Form for Each Comment -->
+                        <a href="#" onclick="document.getElementById('reply-form-{{ comment.id }}').style.display='block'">Reply</a>
+                        <div id="reply-form-{{ comment.id }}" style="display:none;">
+                            <form method="POST" action="{% url 'Comment_Reply' comment.id %}">
+                                {% csrf_token %}
+                                <textarea name="body" cols="110" rows="2" placeholder="Write a reply..." required></textarea>
+                                <button type="submit">Submit Reply</button>
+                            </form>
+                        </div>
+
+                        <a href="{% url 'Comment_Update' post.pk comment.id %}">Edit Comment</a>
+                        <br>
+                        <a href="{% url 'Comment_Delete' post.pk comment.id %}">Delete Comment</a>
+
+                        <!-- Display Replies -->
+                        {% for reply in comment.replies.all %}
+                            <div class="reply">
+                                <p><strong>{{ reply.username }}</strong>: {{ reply.body }}</p>
+                                <a href="#" onclick="document.getElementById('reply-form-{{ reply.id }}').style.display='block'">Reply</a>
+                                <div id="reply-form-{{ reply.id }}" style="display:none;">
+                                    <form method="POST" action="{% url 'Comment_Reply' reply.id %}">
+                                        {% csrf_token %}
+                                        <textarea name="body" cols="110" rows="2" placeholder="Write a reply..." required></textarea>
+                                        <button type="submit">Submit Reply</button>
+                                    </form>
+                                </div>
+                                {% for sub_reply in reply.replies.all %}
+                                    <div class="sub-reply">
+                                        <p><strong>{{ sub_reply.username }}</strong>: {{ sub_reply.body }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <hr>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

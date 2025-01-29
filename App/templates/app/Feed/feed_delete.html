@@ -1,12 +1,12 @@
 {% extends 'App/index.html' %}
 {% block content %}
-    <h1 xmlns="http://www.w3.org/1999/html">Edit post</h1>
+    <h1>Edit post</h1>
 
-    <form class="delete-form" action="{% url 'Feed_Delete' post.pk %}" method="post">
+    <form action="{% url 'Feed_Delete' post.pk %}" method="post" class="custom-form">
         {% csrf_token %}
         <p>Are you sure you want to delete this "{{ post.title }}"?</p>
         <button type="submit">Delete</button>
-        <button><a href="{% url 'Feed' %}">Back</a></button>
     </form>
+    <button><a href="{% url 'Feed' %}">Back</a></button>
 {% endblock %}
 
