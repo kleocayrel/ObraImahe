@@ -28,7 +28,7 @@ class FeedDetail(DetailView):
     success_url = reverse_lazy('Feed')
 
 
-class FeedCreate(CreateView):
+class FeedCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['text', 'image', 'title','artist','category', 'user']
     template_name = 'App/Feed/feed_create.html'

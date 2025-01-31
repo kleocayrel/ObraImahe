@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="card">
-    <form method="post" enctype="multipart/form-data" class="custom-form">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h1 class="card-title">Sign Up</h1>
 
@@ -19,7 +19,12 @@
 
             <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="number" name="age" id="age" class="form-control" required min="1" max="120">
+                <input type="number" name="age" id="age" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile_pic">Profile Picture:</label>
+                <input type="file"  name="profile_pic" id="profile_pic" class="form-control" required>
             </div>
 
             <div class="form-group">
@@ -29,7 +34,7 @@
 
             <div class="form-group">
                 <label for="password2">Re-Password:</label>
-                <input type="password" name="password2" id="password2" class="form-control" required>
+                <input type="password" name="password2" id="password2" class="form-control" required onkeyup=" checkPasswordMatch();">
             </div>
 
             <div class="card-footer">
@@ -41,23 +46,18 @@
     </form>
 </div>
 <script>
-    const password1 = document.getElementById('password1');
-    const password2 = document.getElementById('password2');
+    function checkPasswordMatch() {
+        const password1 = document.getElementById('password1');
+        const password2 = document.getElementById('password2');
 
-    password1.addEventListener('change', () => {
         if (password1.value !== password2.value) {
             password2.setCustomValidity('Passwords do not match');
         } else {
             password2.setCustomValidity('');
         }
-    });
+    }
 
-    password2.addEventListener('change', () => {
-        if (password1.value !== password2.value) {
-            password2.setCustomValidity('Passwords do not match');
-        } else {
-            password2.setCustomValidity('');
-        }
-    });
+    document.getElementById('password1').addEventListener('change', checkPasswordMatch);
+    document.getElementById('password2').addEventListener('change', checkPasswordMatch);
 </script>
 {% endblock %}
