@@ -2,7 +2,7 @@
 <div class="navbar modern-navbar">
     <header class="container flex-container">
         <a href="{% url 'Home' %}" class="logo-container">
-            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+            <img src="{% static 'images/logo2.png' %}" alt="Logo" class="logo-img">
             <span class="brand-name"></span>
         </a>
         <nav>
@@ -10,11 +10,12 @@
                 <li><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'About' %}" class="nav-link">About</a></li>
                 <li><a href="{% url 'Feed' %}" class="nav-link">Art Feed</a></li>
+                 <li><a href="{% url 'Profile' %}" class="nav-link">Profile</a></li>
                 {% if user.is_authenticated %}
                     <li>
                         <form action="{% url 'logout' %}" method="post" class="logout-form">
                             {% csrf_token %}
-                            <button type="submit" class="logout-button">Logout</button>
+                            <input type="submit" value="Logout" class="nav-link" style="color: white; background: #1f2937; cursor: pointer">
                         </form>
                     </li>
                 {% else %}
@@ -24,5 +25,5 @@
             </ul>
         </nav>
     </header>
-</div>
+</div>  
 

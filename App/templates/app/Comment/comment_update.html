@@ -3,11 +3,11 @@
 
 
 <div class="container">
-    <form action="{% url 'Comment_Update' post.pk object.pk %}" method="POST" class="formm">
+    <form action="{% url 'Comment_Update' post.pk object.pk %}" method="POST" class="custom-form">
         <h1>Edit Comment</h1>
         {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Update</button>
+            <input type="submit" value="Update" class="input_button">
             <a href="{% url 'Feed_Detail' post.pk %}" class="input_button">Cancel</a>
     </form>
 </div>

@@ -43,10 +43,7 @@ class Comment(models.Model):
     username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     body = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True, null=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
-
-    class meta:
-        ordering = ['created_date']
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
 
 def __str__(self):
         return '%s - %s' % (self.post.title, self.username)

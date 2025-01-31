@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from Project import settings
 from .views import (HomePage, AboutPage, FeedPage, FeedDetail, FeedCreate,
                     FeedUpdate, FeedDelete, CommentCreate, CommentUpdate,
-                    CommentDelete, CommentReply)
+                    CommentDelete, ReplyCreate)
 
 urlpatterns = [
     path('',HomePage.as_view(), name='Home'),
@@ -17,6 +17,6 @@ urlpatterns = [
     path('feed/<int:pk>/comment', CommentCreate.as_view(), name='Comment_Create'),
     path('feed/<int:post_pk>/comment/<int:pk>/update', CommentUpdate.as_view(),name='Comment_Update'),
     path('feed/<int:post_pk>/comment/<int:pk>/delete', CommentDelete.as_view(), name='Comment_Delete'),
-    path('comment/<int:comment_id>/reply', CommentReply, name='Comment_Reply'),
+    path('post/<int:pk>/comment/<int:comment_id>/reply/', ReplyCreate.as_view(), name='Reply_Create'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,25 @@
+{% extends 'App/index.html' %}
+
+{% block content %}
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>{{ user.username }}'s Profile</h1>
+        </div>
+              <div class="profile-header">
+            {% if user.profile_pic %}
+                <img src="{{ user.profile_pic.url }}" alt="Profile Picture" height="150" width="150" style="border-radius: 50%">
+            {% else %}
+                <img src="#" alt="Default Profile Picture">
+            {% endif %}
+        </div>
+        <div class="profile-details">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Date Joined:</strong> {{ user.date_joined }}</p>
+        </div>
+        <div class="profile-actions">
+            <a href="{% url 'Profile_update' %}" class="btn btn-primary">Update Profile</a>
+            <a href="{% url 'Profile_delete' %}" class="btn btn-danger">Delete Profile</a>
+        </div>
+    </div>
+{% endblock %}

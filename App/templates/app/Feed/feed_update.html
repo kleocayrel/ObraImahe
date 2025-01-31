@@ -6,6 +6,6 @@
     <form action="{% url 'Feed_Update' object.pk %}" method="post" enctype="multipart/form-data" class="custom-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update</button>
+        <input type="submit" value="Update">
     </form>
 {% endblock %}

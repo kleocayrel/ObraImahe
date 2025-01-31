@@ -2,7 +2,7 @@
 {% block content %}
     <a href="{% url 'Feed' %}">Back</a>
 
-<form method="POST" class="formm">
+<form method="POST" class="custom-form">
         {% csrf_token %}
         <h1>Delete Comment</h1>
         <p style="color: black">Are you sure you want to delete the comment "{{ object.body }}" by {{ object.username }}?</p>

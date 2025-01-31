@@ -58,11 +58,11 @@
         <h2>Are you an artist?</h2>
         <p>Join our platform and share your art with the world.</p>
         {% if user.is_authenticated %}
-        <button><a href="{% url 'Feed' %}">Get Started</a></button>
+            <a href="{% url 'Feed' %}" style="color:white;">Get Started</a>
         {% else %}
-        <button><a href="{% url 'Signup' %}">Sign up</a></button>
+        <a href="{% url 'Signup' %}">Sign up</a>
         {% endif %}
-        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        <p>Already have an account? <a href="{% url 'login' %}" style="color: white">Login</a></p>
     </section>
 </div>
 {% endblock %}
